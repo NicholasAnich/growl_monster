@@ -1,0 +1,84 @@
+$mainColor: #a7bcff;
+$secondaryColor:#5d5b8d;
+$btnColor: #7b96ec;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.formContainer {
+  background-color: $mainColor;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .formWrapper {
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+    .logo {
+      color: $secondaryColor;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .title {
+      color: $secondaryColor;
+      font-style: 12px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input {
+        padding: 15px;
+        border: none;
+        width: 250px;
+        border-bottom: 1px solid $mainColor;
+        &::placeholder {
+          color: rgb(175, 175, 175);
+        }
+      }
+
+      button {
+        background-color: $btnColor;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #8da4f1;
+        font-size: 12px;
+        cursor: pointer;
+
+        img {
+          width: 32px;
+        }
+      }
+
+      p {
+        color: $secondaryColor;
+        font-size: 12px;
+        margin-top: 10px;
+      }
+    }
+  }
+}
