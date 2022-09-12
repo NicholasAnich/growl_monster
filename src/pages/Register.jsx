@@ -1,4 +1,5 @@
 import React from "react";
+import Add from "../img/addAvatar.png";
 
 const Register = () => {
   return (
@@ -6,13 +7,19 @@ const Register = () => {
       <div className="formWrapper">
         <span className="logo">Monster Chat</span>
         <span className="title">Register</span>
-        <input type="text" placeholder="display name" />
-        <input type="email" placeholder="email" />
-        <input type="password" placeholder="password" />
-        <input type="file" />
-        <button>Sign up</button>
+        <form>
+          <input type="text" placeholder="display name" />
+          <input type="email" placeholder="email" />
+          <input type="password" placeholder="password" />
+          <input style={{display: "none"}} type="file" id="file"/>
+          <label htmlFor="file">
+            <img src={Add} alt="" />
+            <span>Add an Avatar</span>
+          </label>
+          <button>Sign up</button>
+        </form>
+        <p>Already have an account? Login</p>
       </div>
-      <p>Already have an account? Login</p>
     </div>
   );
 };
