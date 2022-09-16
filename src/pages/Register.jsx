@@ -28,18 +28,18 @@ const Register = () => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-              await updateProfile(res.user, {
-                displayName,
-                photoURL: downloadURL,
-              });
-              await setDoc(doc(db, "users", res.user.uid), {
-                uid: res.user.uid,
-                displayName,
-                email,
-                photoURL: downloadURL,
-              });
-              await setDoc(doc(db, "userChats", res.user.uid), {});
-              navigate("/");
+            await updateProfile(res.user, {
+              displayName,
+              photoURL: downloadURL,
+            });
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL: downloadURL,
+            });
+            await setDoc(doc(db, "userChats", res.user.uid), {});
+            navigate("/");
           });
         }
       );
@@ -55,11 +55,20 @@ const Register = () => {
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="display name" />
-          <input type="email" placeholder="email" />
-          <input type="password" placeholder="password" />
+          <input type="email" placeholder="email" required />
+          <div className="input-pass">
+            <input
+              required
+              type="password"
+              placeholder="password"
+              title="Password must be at least 5 characters"
+              pattern="[a-zA-Z0-9]{5,}"
+            />
+            <p className="input-hint">Must be at least 5 characters</p>
+          </div>
           <input style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
-            <img src={Add} alt="" />
+            <img src={Add} alt="Add feature icon" />
             <span>Add an Avatar</span>
           </label>
           <button>Sign up</button>

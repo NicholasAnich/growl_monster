@@ -3,8 +3,6 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import "./style.scss";
 import {
-  createBrowserRouter,
-  RouterProvider,
   Route,
   Routes,
   BrowserRouter,

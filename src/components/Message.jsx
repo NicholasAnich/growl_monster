@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
-const Message = () => {
-  const pp =
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60";
+const Message = ({ message }) => {
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({behavior: "smooth"})
+  
+    return () => {
+      console.log("cleaned")
+    }
+  }, [message])
+  
   return (
-    <div className="message owner">
+    <div
+    ref={ref}
+      className={`message ${message.senderId === currentUser.uid && "owner"}`}
+    >
       <div className="messageInfo">
-        <img src={pp} alt="" />
+        <img
+          src={
+            message.senderId === currentUser.uid
+              ? currentUser.photoUrl
+              : data.user.photoUrl
+          }
+          alt=""
+        />
         <span>just now</span>
       </div>
       <div className="messageContent">
-        <p>hello</p>
-        <img src={pp} alt="" />
+        <p>{message.text}</p>
+        {message.img && <img src={message.img} alt="" />}
       </div>
     </div>
   );
